@@ -33,22 +33,58 @@ const ClicksPerStepChart = () => {
       // Map step keys to readable labels
       const stepLabelMap: Record<string, string> = {
         "/": "Landing Page",
+        // onboarding paths mapped per request
+        "/onboarding/welcome": "Welcome",
+        "/onboarding/workspace": "Personal Details",
+        "/onboarding/terms": "T&C",
+        "/onboarding/team": "Invite Others",
+        "/onboarding/payment": "Payment",
+        "/onboarding/teams": "Invite Others",
+        // fallback and legacy keys
+        "Landing Page": "Landing Page",
         "/welcome": "Welcome",
         "/workspace": "Personal Details",
-        "/team": "Team",
-        "/step-1": "Personal Details",
-        "/terms": "Terms & Conditions",
+        "/team": "Invite Others",
+        "/terms": "T&C",
         "/payment": "Payment",
         "/checkout": "Completion",
       };
 
-      const aggregated = Array.from(stepMap.entries())
-        .map(([step, totalClicks]) => ({
-          step: stepLabelMap[step] || step,
-          totalClicks,
-        }));
+      // Map raw steps to labels and aggregate by label
+      const labelMap = new Map<string, number>();
+      stepMap.forEach((totalClicks, step) => {
+        const label = stepLabelMap[step] || step;
+        const cur = labelMap.get(label) || 0;
+        labelMap.set(label, cur + totalClicks);
+      });
 
-      setData(aggregated);
+      let aggregated = Array.from(labelMap.entries()).map(([step, totalClicks]) => ({ step, totalClicks }));
+
+      // Desired order: Landing Page, Welcome, Personal Details, Invite Others, T&C, Payment
+      const desiredOrder = [
+        "Landing Page",
+        "Welcome",
+        "Personal Details",
+        "Invite Others",
+        "T&C",
+        "Payment",
+      ];
+
+      const ordered: { step: string; totalClicks: number }[] = [];
+      // push in desired order if present
+      desiredOrder.forEach((label) => {
+        const idx = aggregated.findIndex((a) => a.step === label);
+        if (idx > -1) {
+          ordered.push(aggregated[idx]);
+          aggregated.splice(idx, 1);
+        }
+      });
+
+      // append any remaining labels after the desired ones
+      aggregated.sort((a, b) => b.totalClicks - a.totalClicks); // optional: sort remaining by clicks desc
+      const finalData = [...ordered, ...aggregated];
+
+      setData(finalData);
     };
     fetchClicksPerStep();
   }, []);
