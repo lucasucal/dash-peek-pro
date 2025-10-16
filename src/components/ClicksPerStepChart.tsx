@@ -84,7 +84,7 @@ const ClicksPerStepChart = () => {
             />
             <Bar 
               dataKey="totalClicks" 
-              fill="hsl(var(--chart-2))"
+              fill="hsl(var(--primary))"
               radius={[8, 8, 0, 0]}
             />
           </BarChart>
