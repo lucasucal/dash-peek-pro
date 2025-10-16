@@ -1,11 +1,12 @@
 import { Card } from "@/components/ui/card";
 
 const heatmapData = [
-  { step: "Step 1", durations: [63, 80, 44, 22, 10] },
-  { step: "Step 2", durations: [22, 140, 110, 54, 12] },
-  { step: "Step 3", durations: [13, 44, 98, 57, 42] },
-  { step: "Step 4", durations: [16, 21, 63, 75, 19] },
-  { step: "Step 5", durations: [20, 36, 47, 29, 48] }
+  { step: "Welcome", durations: [80, 20, 10, 2, 1] },
+  { step: "Personal Details", durations: [1, 5, 10, 20, 80] },
+  { step: "Invite Others", durations: [13, 44, 98, 57, 42] },
+  { step: "Terms & Conditions", durations: [16, 21, 63, 75, 19] },
+  { step: "Payment", durations: [20, 36, 37, 40, 100] },
+  { step: "Completion", durations: [50, 10, 20, 5, 10] },
 ];
 
 const timeRanges = ["0-10s", "10-30s", "30-60s", "1-2min", "2min+"];

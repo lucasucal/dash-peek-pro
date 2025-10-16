@@ -10,7 +10,7 @@ const Index = () => {
     { label: "Clicks/Min", value: "34" },
     { label: "Completion Ratio", value: "82%" },
     { label: "Hover/Click Ratio", value: "2.5" },
-    { label: "Early Exit Step", value: "Step 3" },
+    { label: "Early Exit Step", value: "Step 2" },
     { label: "Step Duration", value: "1min 24s" },
   ];
 

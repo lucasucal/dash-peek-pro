@@ -10,7 +10,7 @@ const AIRecommendation = () => {
         <h2 className="text-xl font-bold text-primary">AI RECOMMENDATION</h2>
       </div>
       <p className="text-foreground mb-6 leading-relaxed">
-        Try reducing user drop-off after Step 3 by simplifying form fields.
+        Try reducing user drop-off after Step 2 by moving form fields later in the process.
       </p>
       <Button className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:scale-105">
         View Suggestions

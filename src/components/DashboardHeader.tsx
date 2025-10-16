@@ -28,7 +28,7 @@ const DashboardHeader = () => {
         </div>
         
         <div className="flex items-center gap-3">
-          <span className="hidden sm:inline text-sm font-medium">Joe Brand</span>
+          <span className="hidden sm:inline text-sm font-medium">Admi</span>
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
             <span className="text-sm font-bold text-primary-foreground">JB</span>
           </div>

@@ -3,10 +3,11 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 const data = [
   { step: "1", exits: 5 },
-  { step: "2", exits: 9 },
-  { step: "3", exits: 18 },
+  { step: "2", exits: 18 },
+  { step: "3", exits: 9 },
   { step: "4", exits: 7 },
-  { step: "5", exits: 1 },
+  { step: "5", exits: 16 },
+  { step: "6", exits: 1 },
 ];
 
 const EarlyExitChart = () => {
