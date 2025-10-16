@@ -20,9 +20,9 @@ const EarlyExitChart = () => {
   return (
     <Card className="p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
       <h2 className="text-xl font-bold text-primary mb-6">EARLY STEP EXIT</h2>
-      <div className="w-full h-[300px]">
+      <div className="w-full h-[320px]">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+          <LineChart data={data} margin={{ top: 10, right: 20, left: 10, bottom: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
             <XAxis 
               dataKey="step" 
