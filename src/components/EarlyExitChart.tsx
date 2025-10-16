@@ -4,8 +4,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 // Sync with StepDurationHeatmap steps and use highest duration bin as exits
 const heatmapData = [
   { step: "Welcome", durations: [30, 20, 10, 5, 5] },
-  { step: "Personal Details", durations: [5, 10, 15, 20, 20] },
-  { step: "Invite Others", durations: [10, 15, 20, 10, 8] },
+  { step: "Workspace", durations: [5, 10, 15, 20, 20] },
+  { step: "Team", durations: [10, 15, 20, 10, 8] },
   { step: "Terms & Conditions", durations: [5, 10, 15, 12, 6] },
   { step: "Payment", durations: [5, 10, 15, 10, 20] },
   { step: "Completion", durations: [10, 5, 5, 2, 2] },
@@ -20,40 +20,36 @@ const EarlyExitChart = () => {
   return (
     <Card className="p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
       <h2 className="text-xl font-bold text-primary mb-6">EARLY STEP EXIT</h2>
-      <div className="w-full h-[320px] flex items-center justify-center" style={{ minHeight: 400 }}>
-        <div className="w-full max-w-2xl h-full flex flex-col justify-center" style={{ height: 320, paddingTop: 40 }}>
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ top: 10, right: 20, left: 10, bottom: 10 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-              <XAxis 
-                dataKey="step" 
-                stroke="hsl(var(--muted-foreground))"
-                tick={{ fill: 'hsl(var(--muted-foreground))' }}
-              />
-              <YAxis 
-                stroke="hsl(var(--muted-foreground))"
-                tick={{ fill: 'hsl(var(--muted-foreground))' }}
-              />
-              <Tooltip 
-                contentStyle={{ 
-                  backgroundColor: 'hsl(var(--card))', 
-                  border: '1px solid hsl(var(--border))',
-                  borderRadius: '8px'
-                }}
-              />
-              <Line 
-                type="monotone" 
-                dataKey="exits" 
-                stroke="hsl(var(--primary))" 
-                strokeWidth={3}
-                dot={{ fill: 'hsl(var(--primary))', r: 6 }}
-                activeDot={{ r: 8 }}
-                animationDuration={1000}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart data={data} margin={{ top: 10, right: 20, left: 10, bottom: 10 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
+          <XAxis
+            dataKey="step"
+            stroke="hsl(var(--muted-foreground))"
+            tick={{ fill: "hsl(var(--muted-foreground))" }}
+          />
+          <YAxis
+            stroke="hsl(var(--muted-foreground))"
+            tick={{ fill: "hsl(var(--muted-foreground))" }}
+          />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "hsl(var(--card))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "8px",
+            }}
+          />
+          <Line
+            type="monotone"
+            dataKey="exits"
+            stroke="hsl(var(--primary))"
+            strokeWidth={2}
+            dot={{ fill: "hsl(var(--primary))", r: 6 }}
+            activeDot={{ r: 8 }}
+            animationDuration={1000}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </Card>
   );
 };
