@@ -57,39 +57,45 @@ const ClicksPerStepChart = () => {
   }, []);
 
   return (
-    <Card className="bg-card/50 backdrop-blur-sm border-accent/20 animate-scale-in">
-      <CardHeader>
-        <CardTitle className="text-foreground">Clicks Per Step</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--accent))" opacity={0.2} />
-            <XAxis 
-              dataKey="step" 
-              stroke="hsl(var(--muted-foreground))"
-              tick={{ fill: "hsl(var(--muted-foreground))" }}
-            />
-            <YAxis 
-              stroke="hsl(var(--muted-foreground))"
-              tick={{ fill: "hsl(var(--muted-foreground))" }}
-            />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: "hsl(var(--card))",
-                border: "1px solid hsl(var(--accent))",
-                borderRadius: "8px",
-                color: "hsl(var(--foreground))",
-              }}
-            />
-            <Bar 
-              dataKey="totalClicks" 
-              fill="hsl(var(--primary))"
-              radius={[8, 8, 0, 0]}
-            />
-          </BarChart>
-        </ResponsiveContainer>
-      </CardContent>
+    <Card className="p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+      <h2 className="text-xl font-bold text-primary mb-6">CLICKS PER STEP</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={data}>
+          <defs>
+            <linearGradient id="colorClicksStep" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.1} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
+          <XAxis
+            dataKey="step"
+            stroke="hsl(var(--muted-foreground))"
+            tick={{ fill: "hsl(var(--muted-foreground))", fontWeight: 500, fontSize: 14 }}
+          />
+          <YAxis
+            stroke="hsl(var(--muted-foreground))"
+            tick={{ fill: "hsl(var(--muted-foreground))", fontWeight: 500, fontSize: 14 }}
+          />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "hsl(var(--card))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "8px",
+              color: "hsl(var(--foreground))",
+              fontWeight: 600,
+              fontSize: 16,
+            }}
+          />
+          <Bar
+            dataKey="totalClicks"
+            fill="url(#colorClicksStep)"
+            radius={[8, 8, 0, 0]}
+            stroke="hsl(var(--primary))"
+            strokeWidth={2}
+          />
+        </BarChart>
+      </ResponsiveContainer>
     </Card>
   );
 };
