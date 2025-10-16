@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const DashboardHeader = () => {
   const navItems = ["Dashboard", "Reports", "AI Insights", "Settings"];
+  const navigate = useNavigate();
   
   return (
     <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -20,6 +22,10 @@ const DashboardHeader = () => {
                 key={item}
                 variant={index === 0 ? "default" : "ghost"}
                 className={index === 0 ? "bg-primary text-primary-foreground hover:bg-primary/90" : ""}
+                onClick={() => {
+                  const path = item === "Dashboard" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`;
+                  navigate(path);
+                }}
               >
                 {item}
               </Button>
