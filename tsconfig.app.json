@@ -26,5 +26,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "src/components/tracking.ts"]
+  "include": ["src", "src/tracking.js"]
 }

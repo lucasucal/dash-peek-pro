@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => ({
     outDir: "public", // output to public so it can be loaded externally
     emptyOutDir: false, // don't delete React build output
     lib: {
-      entry: path.resolve(__dirname, "src/tracker.ts"),
+      entry: path.resolve(__dirname, "src/tracker.js"),
       name: "OnflowTracker",
       formats: ["iife"], // standalone script for embedding
       fileName: "tracker",
