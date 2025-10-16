@@ -3,7 +3,6 @@ import AIRecommendation from "@/components/AIRecommendation";
 import MetricsCard from "@/components/MetricsCard";
 import CPMChart from "@/components/CPMChart";
 import { useState, useEffect } from "react";
-import ClicksPerStepChart from "@/components/ClicksPerStepChart";
 import EarlyExitChart from "@/components/EarlyExitChart";
 import StepDurationHeatmap from "@/components/StepDurationHeatmap";
 
