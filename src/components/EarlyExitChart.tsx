@@ -1,14 +1,20 @@
 import { Card } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
-const data = [
-  { step: "1", exits: 5 },
-  { step: "2", exits: 18 },
-  { step: "3", exits: 9 },
-  { step: "4", exits: 7 },
-  { step: "5", exits: 16 },
-  { step: "6", exits: 1 },
+// Sync with StepDurationHeatmap steps and use highest duration bin as exits
+const heatmapData = [
+  { step: "Welcome", durations: [30, 20, 10, 5, 5] },
+  { step: "Personal Details", durations: [5, 10, 15, 20, 20] },
+  { step: "Invite Others", durations: [10, 15, 20, 10, 8] },
+  { step: "Terms & Conditions", durations: [5, 10, 15, 12, 6] },
+  { step: "Payment", durations: [5, 10, 15, 10, 20] },
+  { step: "Completion", durations: [10, 5, 5, 2, 2] },
 ];
+
+const data = heatmapData.map((row, idx) => ({
+  step: `${idx + 1}`,
+  exits: row.durations[row.durations.length - 1], // Use the last bin (2min+)
+}));
 
 const EarlyExitChart = () => {
   return (

@@ -1,12 +1,13 @@
+
 import { Card } from "@/components/ui/card";
 
 const heatmapData = [
-  { step: "Welcome", durations: [80, 20, 10, 2, 1] },
-  { step: "Personal Details", durations: [1, 5, 10, 20, 80] },
-  { step: "Invite Others", durations: [13, 44, 98, 57, 42] },
-  { step: "Terms & Conditions", durations: [16, 21, 63, 75, 19] },
-  { step: "Payment", durations: [20, 36, 37, 40, 100] },
-  { step: "Completion", durations: [50, 10, 20, 5, 10] },
+  { step: "Welcome", durations: [120, 40, 20, 10, 5] },
+  { step: "Personal Details", durations: [5, 15, 30, 70, 80] },
+  { step: "Invite Others", durations: [20, 45, 60, 50, 25] },
+  { step: "Terms & Conditions", durations: [16, 36, 64, 60, 24] },
+  { step: "Payment", durations: [10, 30, 50, 70, 40] },
+  { step: "Completion", durations: [160, 24, 10, 4, 2] },
 ];
 
 const timeRanges = ["0-10s", "10-30s", "30-60s", "1-2min", "2min+"];
@@ -41,7 +42,7 @@ const StepDurationHeatmap = () => {
               <div className="flex items-center text-sm font-semibold text-foreground">
                 {row.step}
               </div>
-              {row.durations.map((value, colIndex) => (
+              {row.durations.slice(0, 5).map((value, colIndex) => (
                 <div
                   key={colIndex}
                   className={`flex items-center justify-center rounded-lg p-4 text-lg font-bold transition-all duration-200 hover:scale-105 hover:shadow-md cursor-pointer ${getHeatColor(value)}`}
