@@ -12,15 +12,45 @@ const ClicksPerStepChart = () => {
   const [data, setData] = useState<StepData[]>([]);
 
   useEffect(() => {
-    // Use dummy data for demonstration and correct order/labels
-    setData([
-      { step: "Landing Page", totalClicks: 245 },
-      { step: "Welcome", totalClicks: 198 },
-      { step: "Personal Details", totalClicks: 156 },
-      { step: "Terms & Conditions", totalClicks: 132 },
-      { step: "Payment", totalClicks: 98 },
-      { step: "Completion", totalClicks: 87 },
-    ]);
+    const fetchClicksPerStep = async () => {
+      const { data: clicksData, error } = await supabase
+        .from("clicks")
+        .select("step, count");
+
+      if (error) {
+        console.error("Error fetching clicks per step:", error);
+        setData([]);
+        return;
+      }
+
+      // Aggregate clicks by step
+      const stepMap = new Map<string, number>();
+      clicksData?.forEach((item: { step: string; count: number }) => {
+        const current = stepMap.get(item.step) || 0;
+        stepMap.set(item.step, current + item.count);
+      });
+
+      // Map step keys to readable labels
+      const stepLabelMap: Record<string, string> = {
+        "/": "Landing Page",
+        "/welcome": "Welcome",
+        "/workspace": "Personal Details",
+        "/team": "Team",
+        "/step-1": "Personal Details",
+        "/terms": "Terms & Conditions",
+        "/payment": "Payment",
+        "/checkout": "Completion",
+      };
+
+      const aggregated = Array.from(stepMap.entries())
+        .map(([step, totalClicks]) => ({
+          step: stepLabelMap[step] || step,
+          totalClicks,
+        }));
+
+      setData(aggregated);
+    };
+    fetchClicksPerStep();
   }, []);
 
   return (
