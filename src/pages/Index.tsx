@@ -4,6 +4,7 @@ import MetricsCard from "@/components/MetricsCard";
 import CPMChart from "@/components/CPMChart";
 import EarlyExitChart from "@/components/EarlyExitChart";
 import StepDurationHeatmap from "@/components/StepDurationHeatmap";
+import ClicksPerStepChart from "@/components/ClicksPerStepChart";
 
 const Index = () => {
   const metrics = [
@@ -24,10 +25,11 @@ const Index = () => {
             <AIRecommendation />
           </div>
 
-          {/* Metrics and CPM Chart */}
-          <div className="grid gap-6 lg:grid-cols-2 animate-fade-in" style={{ animationDelay: '100ms' }}>
+          {/* Metrics, CPM Chart, and Clicks Per Step */}
+          <div className="grid gap-6 lg:grid-cols-3 animate-fade-in" style={{ animationDelay: '100ms' }}>
             <MetricsCard metrics={metrics} />
             <CPMChart />
+            <ClicksPerStepChart />
           </div>
 
           {/* Heatmap and Early Exit Chart */}
