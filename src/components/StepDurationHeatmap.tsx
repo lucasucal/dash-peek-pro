@@ -5,8 +5,7 @@ const heatmapData = [
   { step: "Step 2", durations: [22, 140, 110, 54, 12] },
   { step: "Step 3", durations: [13, 44, 98, 57, 42] },
   { step: "Step 4", durations: [16, 21, 63, 75, 19] },
-  { step: "Step 5", durations: [20, 36, 47, 29, 48] },
-  { step: "Step 6", durations: [20, 36, 47, 29, 48] },
+  { step: "Step 5", durations: [20, 36, 47, 29, 48] }
 ];
 
 const timeRanges = ["0-10s", "10-30s", "30-60s", "1-2min", "2min+"];
