@@ -2,7 +2,6 @@ import DashboardHeader from "@/components/DashboardHeader";
 import AIRecommendation from "@/components/AIRecommendation";
 import MetricsCard from "@/components/MetricsCard";
 import CPMChart from "@/components/CPMChart";
-import { useState, useEffect } from "react";
 import EarlyExitChart from "@/components/EarlyExitChart";
 import StepDurationHeatmap from "@/components/StepDurationHeatmap";
 
@@ -25,11 +24,10 @@ const Index = () => {
             <AIRecommendation />
           </div>
 
-          {/* Metrics, CPM Chart, and Clicks Per Step Chart */}
-          <div className="grid gap-6 lg:grid-cols-3 animate-fade-in" style={{ animationDelay: '100ms' }}>
+          {/* Metrics and CPM Chart */}
+          <div className="grid gap-6 lg:grid-cols-2 animate-fade-in" style={{ animationDelay: '100ms' }}>
             <MetricsCard metrics={metrics} />
             <CPMChart />
-            <ClicksPerStepChart />
           </div>
 
           {/* Heatmap and Early Exit Chart */}
